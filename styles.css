@@ -36,7 +36,7 @@ label {
     color: #555;
 }
 
-input[type="text"] {
+input[type="number"] {
     padding: 10px;
     width: 100%;
     max-width: 300px;
@@ -45,11 +45,18 @@ input[type="text"] {
     border-radius: 5px;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
+    -webkit-appearance: none;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 
-input[type="text"]:focus {
+}
+input[type="number"]:focus {
     border-color: #007BFF;
     outline: none;
+    -webkit-appearance: none;
 }
 
 button {
@@ -71,7 +78,9 @@ button:hover {
     font-size: 1.2em;
     color: #333;
 }
-
+#id{
+    -webkit-appearance: none;
+}
 @media (max-width: 600px) {
     .container {
         padding: 20px;

@@ -6,7 +6,7 @@ document.getElementById('lookup-form').addEventListener('submit', function(event
         .then(response => response.text())
         .then(data => {
             const rows = data.split('\n').slice(1); // skip header row
-            let section = 'ID not found';
+            let section = 'ИИН не найден';
             rows.forEach(row => {
                 const [csvId, csvSection] = row.split(',');
                 if (csvId === id) {
