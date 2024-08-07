@@ -1,6 +1,23 @@
-document.getElementById('lookup-form').addEventListener('submit', function (event) {
+const googleScriptUrl = "https://script.google.com/macros/s/AKfycbw0CVthlcazCh7nEHtp4u5BQt_YvB8T2exmuDUQ7tXfqX22C_DYEiFh2XJUO6OYMJG5bw/exec";
+document.getElementById('lookup-form').addEventListener('submit', function(event) {
     event.preventDefault();
     const id = document.getElementById('id').value.trim();
+
+    // Log the search data to Google Sheets
+    fetch(googleScriptUrl, {
+        method: 'POST',
+        body: JSON.stringify({ id: id }),
+        headers: { 'Content-Type': 'application/json' }
+    }).then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            console.log('Search logged');
+        } else {
+            console.error('Error logging search:', data);
+        }
+    }).catch(error => {
+        console.error('Error logging search:', error);
+    });
 
     fetch('data.csv')
         .then(response => response.text())
@@ -38,7 +55,6 @@ document.getElementById('lookup-form').addEventListener('submit', function (even
             console.error('Error:', error);
         });
 });
-
 const events = [
     {time: "09:00", description: "Event 1"},
     {time: "10:00", description: "Event 2"},
