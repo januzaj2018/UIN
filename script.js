@@ -1,4 +1,4 @@
-document.getElementById('lookup-form').addEventListener('submit', function(event) {
+document.getElementById('lookup-form').addEventListener('submit', function (event) {
     event.preventDefault();
     const id = document.getElementById('id').value.trim();
 
@@ -40,17 +40,17 @@ document.getElementById('lookup-form').addEventListener('submit', function(event
 });
 
 const events = [
-    { time: "09:00", description: "Event 1" },
-    { time: "10:00", description: "Event 2" },
-    { time: "11:00", description: "Event 3" },
-    { time: "12:00", description: "Event 4" },
-    { time: "13:00", description: "Event 5" },
-    { time: "14:00", description: "Event 6" },
-    { time: "15:00", description: "Event 7" },
-    { time: "16:00", description: "Event 8" },
-    { time: "17:00", description: "Event 9" },
-    { time: "18:00", description: "Event 10" },
-    { time: "19:00", description: "Event 11" }
+    {time: "09:00", description: "Event 1"},
+    {time: "10:00", description: "Event 2"},
+    {time: "11:00", description: "Event 3"},
+    {time: "12:00", description: "Event 4"},
+    {time: "13:00", description: "Event 5"},
+    {time: "14:00", description: "Event 6"},
+    {time: "15:00", description: "Event 7"},
+    {time: "16:00", description: "Event 8"},
+    {time: "17:00", description: "Event 9"},
+    {time: "18:00", description: "Event 10"},
+    {time: "19:00", description: "Event 11"}
 ];
 
 function displayEvents() {
@@ -104,4 +104,4 @@ function switchLanguage(lang) {
 }
 
 displayEvents();
-switchLanguage('en'); // Default language
+switchLanguage('en');
