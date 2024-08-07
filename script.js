@@ -1,29 +1,33 @@
-const googleScriptUrl = "https://script.google.com/macros/s/AKfycbw8n5epzzG67daKECYgPhwgCNLgv3UoikTjqADIB5iiUcL1lfwjjF_BABOZQxwpZUtzNg/exec";
+const apiKey = 'AIzaSyBpGEa7sRnQ0DmIHvsjuANhcTJx8iw2qWY';
+const spreadsheetId = '1gVWzSBtABYk5QD-ZjsY55VRLzLi5P-cIEAqLPAL59Hs';
+const range = 'Searches!A:B'; // Adjust range as needed
 
 document.getElementById('lookup-form').addEventListener('submit', function (event) {
     event.preventDefault();
     const id = document.getElementById('id').value.trim();
 
-    // Log the search data to Google Sheets
-    fetch(googleScriptUrl, {
+    const data = {
+        values: [[new Date().toISOString(), id]]
+    };
+
+    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}:append?valueInputOption=RAW&key=${apiKey}`, {
         method: 'POST',
-        mode: 'cors',  // Ensure CORS is enabled
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({id: id})
+        body: JSON.stringify(data)
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                console.log('Search logged');
-            } else {
-                console.error('Error logging search:', data);
-            }
-        })
-        .catch(error => {
-            console.error('Error logging search:', error);
-        });
+    .then(response => response.json())
+    .then(data => {
+        if (data.updates && data.updates.updatedCells > 0) {
+            console.log('Search logged');
+        } else {
+            console.error('Error logging search:', data);
+        }
+    })
+    .catch(error => {
+        console.error('Error logging search:', error);
+    });
 
     fetch('data.csv')
         .then(response => response.text())
