@@ -42,45 +42,6 @@ document.getElementById('lookup-form').addEventListener('submit', function (even
 });
 
 
-document.getElementById('xlsx-file').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = function(e) {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const sheet = workbook.Sheets[workbook.SheetNames[0]]; // Assuming the first sheet
-
-        if (!sheet) {
-            alert('No sheet found in the Excel file.');
-            return;
-        }
-
-        const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-        console.log('Loaded data:', rows);
-
-        // You can process or display the data as needed
-    };
-
-    reader.readAsArrayBuffer(file);
-});
-
-function logSearch(id) {
-    const now = new Date();
-    const log = {
-        timestamp: now.toISOString(),
-        id: id
-    };
-
-    console.log('Logging search data:', log);
-
-    // Append the search data to the log container
-    const logContainer = document.getElementById('log');
-    const entry = document.createElement('div');
-    entry.innerText = `Time: ${now.toLocaleString()}, ID: ${id}`;
-    logContainer.appendChild(entry);
-}
-
 
 const events = [
     {time: "09:00", description: "Event 1"},
