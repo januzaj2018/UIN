@@ -1,4 +1,4 @@
-const googleScriptUrl = "https://script.google.com/macros/s/AKfycbw5cnRYHdo-AY6PFnuMYWSK4sWD_5R0yrZfNOOoGRuIt9t9OQn5YRJa-wCbmTCP2srnHg/exec";
+const googleScriptUrl = "https://script.google.com/macros/s/AKfycbzlQNhU9TVakcClOLboPJEqVvA2WBBQSMgu97TpfDS5F-qXkCb7JS5SEUQnNg19I7XxYQ/exec";
 
 document.getElementById('lookup-form').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -125,6 +125,7 @@ function switchLanguage(lang) {
         }
     });
 }
+
 console.log('Sending fetch request');
 fetch(googleScriptUrl, {
     method: 'POST',
@@ -132,23 +133,23 @@ fetch(googleScriptUrl, {
     headers: {
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ id: id })
+    body: JSON.stringify({id: id})
 })
-.then(response => {
-    console.log('Received response:', response);
-    return response.json();
-})
-.then(data => {
-    console.log('Parsed response:', data);
-    if (data.status === 'success') {
-        console.log('Search logged');
-    } else {
-        console.error('Error logging search:', data);
-    }
-})
-.catch(error => {
-    console.error('Error logging search:', error);
-});
+    .then(response => {
+        console.log('Received response:', response);
+        return response.json();
+    })
+    .then(data => {
+        console.log('Parsed response:', data);
+        if (data.status === 'success') {
+            console.log('Search logged');
+        } else {
+            console.error('Error logging search:', data);
+        }
+    })
+    .catch(error => {
+        console.error('Error logging search:', error);
+    });
 
 displayEvents();
 switchLanguage('en');
