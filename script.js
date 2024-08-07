@@ -131,29 +131,5 @@ function switchLanguage(lang) {
 }
 
 console.log('Sending fetch request');
-fetch(googleScriptUrl, {
-    method: 'POST',
-    mode: 'cors',  // Ensure CORS is enabled
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({id: id})
-})
-    .then(response => {
-        console.log('Received response:', response);
-        return response.json();
-    })
-    .then(data => {
-        console.log('Parsed response:', data);
-        if (data.status === 'success') {
-            console.log('Search logged');
-        } else {
-            console.error('Error logging search:', data);
-        }
-    })
-    .catch(error => {
-        console.error('Error logging search:', error);
-    });
-
 displayEvents();
 switchLanguage('en');
