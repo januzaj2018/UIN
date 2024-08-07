@@ -1,4 +1,4 @@
-const googleScriptUrl = "https://script.google.com/macros/s/AKfycbzlQNhU9TVakcClOLboPJEqVvA2WBBQSMgu97TpfDS5F-qXkCb7JS5SEUQnNg19I7XxYQ/exec";
+const googleScriptUrl = "https://script.google.com/macros/s/AKfycbw8n5epzzG67daKECYgPhwgCNLgv3UoikTjqADIB5iiUcL1lfwjjF_BABOZQxwpZUtzNg/exec";
 
 document.getElementById('lookup-form').addEventListener('submit', function (event) {
     event.preventDefault();
