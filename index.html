@@ -3,22 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Поиск по ИИН</title>
+    <title>ID Lookup</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Поиск по ИИН</h1>
+        <div class="language-switcher">
+            <button onclick="switchLanguage('kz')">Қаз</button>
+            <button onclick="switchLanguage('en')">Eng</button>
+            <button onclick="switchLanguage('ru')">Рус</button>
+        </div>
+        <h1 data-lang="heading">ID Lookup</h1>
         <form id="lookup-form">
-            <label for="id">Введите ИИН:</label>
+            <label for="id" data-lang="label">Enter ID:</label>
             <input type="number" id="id" name="id" required autofocus>
-            <button type="submit">Поиск</button>
+            <button type="submit" data-lang="button">Search</button>
         </form>
         <div id="section"></div>
         <div id="place"></div>
-
     </div>
-    <script src="index.js"></script>
 
+    <div class="events-section">
+        <h2 data-lang="eventsHeading">Events</h2>
+        <table id="events-table">
+            <thead>
+                <tr>
+                    <th data-lang="eventsTime">Time</th>
+                    <th data-lang="eventsDescription">Description</th>
+                </tr>
+            </thead>
+            <tbody id="events">
+                <!-- Sample events will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

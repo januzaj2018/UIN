@@ -4,9 +4,8 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
 }
 
 .container {
@@ -17,6 +16,28 @@ body {
     width: 100%;
     max-width: 400px;
     text-align: center;
+    margin: 20px 0;
+}
+
+.language-switcher {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.language-switcher button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.language-switcher button:hover {
+    background-color: #0056b3;
 }
 
 h1 {
@@ -47,12 +68,13 @@ input[type="number"] {
     transition: border-color 0.3s ease;
     -webkit-appearance: none;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-
 }
+
 input[type="number"]:focus {
     border-color: #007BFF;
     outline: none;
@@ -73,26 +95,54 @@ button:hover {
     background-color: #0056b3;
 }
 
-#section {
+#section, #place {
     margin-top: 20px;
     font-size: 1.2em;
     color: #333;
 }
-#place {
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: #333;
-}
-#id{
+
+#id {
     -webkit-appearance: none;
 }
+
+.events-section {
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.events-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+table th {
+    background-color: #007BFF;
+    color: #fff;
+}
+
 @media (max-width: 600px) {
-    .container {
+    .container, .events-section {
         padding: 20px;
         width: 90%;
     }
 
-    input[type="text"] {
+    input[type="number"] {
         width: 100%;
     }
 }
