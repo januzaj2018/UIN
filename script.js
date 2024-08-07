@@ -1,5 +1,6 @@
-const googleScriptUrl = "https://script.google.com/macros/s/AKfycbzaTeLB6bXFpBNO-C1cymH0oW1oAxEYKQRDx4mIW1LAvsy_AvXkxpu6JL7viwVqwBNipA/exec";
-document.getElementById('lookup-form').addEventListener('submit', function(event) {
+const googleScriptUrl = "https://script.google.com/macros/s/AKfycbw5cnRYHdo-AY6PFnuMYWSK4sWD_5R0yrZfNOOoGRuIt9t9OQn5YRJa-wCbmTCP2srnHg/exec";
+
+document.getElementById('lookup-form').addEventListener('submit', function (event) {
     event.preventDefault();
     const id = document.getElementById('id').value.trim();
 
@@ -10,19 +11,19 @@ document.getElementById('lookup-form').addEventListener('submit', function(event
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id: id })
+        body: JSON.stringify({id: id})
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'success') {
-            console.log('Search logged');
-        } else {
-            console.error('Error logging search:', data);
-        }
-    })
-    .catch(error => {
-        console.error('Error logging search:', error);
-    });
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                console.log('Search logged');
+            } else {
+                console.error('Error logging search:', data);
+            }
+        })
+        .catch(error => {
+            console.error('Error logging search:', error);
+        });
 
     fetch('data.csv')
         .then(response => response.text())
@@ -124,6 +125,30 @@ function switchLanguage(lang) {
         }
     });
 }
+console.log('Sending fetch request');
+fetch(googleScriptUrl, {
+    method: 'POST',
+    mode: 'cors',  // Ensure CORS is enabled
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ id: id })
+})
+.then(response => {
+    console.log('Received response:', response);
+    return response.json();
+})
+.then(data => {
+    console.log('Parsed response:', data);
+    if (data.status === 'success') {
+        console.log('Search logged');
+    } else {
+        console.error('Error logging search:', data);
+    }
+})
+.catch(error => {
+    console.error('Error logging search:', error);
+});
 
 displayEvents();
 switchLanguage('en');
