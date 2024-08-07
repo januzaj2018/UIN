@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ID Lookup</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.0/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -16,7 +17,7 @@
     <h1 data-lang="heading">ID Lookup</h1>
     <form id="lookup-form">
         <label for="id" data-lang="label">Enter ID:</label>
-        <input type="number" id="id" name="id" required autofocus>
+        <input type="number" id="id" name="id" required autofocus accept="data.xlsx">
         <button type="submit" data-lang="button">Search</button>
     </form>
     <div id="section"></div>
