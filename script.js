@@ -1,4 +1,4 @@
-const googleScriptUrl = "https://script.google.com/macros/s/AKfycbw0CVthlcazCh7nEHtp4u5BQt_YvB8T2exmuDUQ7tXfqX22C_DYEiFh2XJUO6OYMJG5bw/exec";
+const googleScriptUrl = "https://script.google.com/macros/s/AKfycbzaTeLB6bXFpBNO-C1cymH0oW1oAxEYKQRDx4mIW1LAvsy_AvXkxpu6JL7viwVqwBNipA/exec";
 document.getElementById('lookup-form').addEventListener('submit', function(event) {
     event.preventDefault();
     const id = document.getElementById('id').value.trim();
@@ -6,16 +6,21 @@ document.getElementById('lookup-form').addEventListener('submit', function(event
     // Log the search data to Google Sheets
     fetch(googleScriptUrl, {
         method: 'POST',
-        body: JSON.stringify({ id: id }),
-        headers: { 'Content-Type': 'application/json' }
-    }).then(response => response.json())
+        mode: 'cors',  // Ensure CORS is enabled
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id: id })
+    })
+    .then(response => response.json())
     .then(data => {
         if (data.status === 'success') {
             console.log('Search logged');
         } else {
             console.error('Error logging search:', data);
         }
-    }).catch(error => {
+    })
+    .catch(error => {
         console.error('Error logging search:', error);
     });
 
@@ -55,6 +60,7 @@ document.getElementById('lookup-form').addEventListener('submit', function(event
             console.error('Error:', error);
         });
 });
+
 const events = [
     {time: "09:00", description: "Event 1"},
     {time: "10:00", description: "Event 2"},
