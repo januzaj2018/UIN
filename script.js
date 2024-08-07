@@ -107,6 +107,5 @@ function switchLanguage(lang) {
     });
 }
 
-console.log('Sending fetch request');
 displayEvents();
 switchLanguage('en');
