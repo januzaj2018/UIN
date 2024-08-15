@@ -146,3 +146,79 @@ table th {
         width: 100%;
     }
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pdf-section {
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.pdf-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.pdf-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.pdf-section li {
+    margin-bottom: 10px;
+}
+
+.pdf-section a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pdf-section a:hover {
+    text-decoration: underline;
+}
+
+
+.pdf-viewer {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (max-width: 600px) {
+    .container, .events-section, .pdf-section {
+        padding: 20px;
+        width: 90%;
+    }
+
+    input[type="number"] {
+        width: 100%;
+    }
+}

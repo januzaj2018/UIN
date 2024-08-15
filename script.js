@@ -1,10 +1,15 @@
-
 document.getElementById('lookup-form').addEventListener('submit', function (event) {
     event.preventDefault();
     const id = document.getElementById('id').value.trim();
 
+    // Create a FormData object to send data in the body of the POST request
+    const formData = new FormData();
+    formData.append('id', id);
 
-    fetch('data.csv')
+    fetch('data.csv', {
+        method: 'POST',
+        body: formData,
+    })
         .then(response => response.text())
         .then(data => {
             const rows = data.split('\n').slice(1); // skip header row
@@ -40,21 +45,16 @@ document.getElementById('lookup-form').addEventListener('submit', function (even
             console.error('Error:', error);
         });
 });
-
-
-
 const events = [
-    {time: "09:00", description: "Event 1"},
-    {time: "10:00", description: "Event 2"},
-    {time: "11:00", description: "Event 3"},
-    {time: "12:00", description: "Event 4"},
-    {time: "13:00", description: "Event 5"},
-    {time: "14:00", description: "Event 6"},
-    {time: "15:00", description: "Event 7"},
-    {time: "16:00", description: "Event 8"},
-    {time: "17:00", description: "Event 9"},
-    {time: "18:00", description: "Event 10"},
-    {time: "19:00", description: "Event 11"}
+    {time: "08:00-09:00", description: "Тіркелу"},
+    {time: "09:00-09:45", description: "«Мастер - дәріс», Хартман Дуглас, Мичиган мемлекттің университетінің профессоры"},
+    {time: "10:00-12:30", description: "Секциялық отырыстар"},
+    {time: "12:30-14:00", description: "Үзіліс"},
+    {time: "14:00", description: "Цифрлық көрме жұмысымен танысу"},
+    {time: "14:30-14:50", description: "«Қазақстан мұғалімі» ұлттық премиясының Үздік-50 финалистінің тұсаукесері"},
+    {time: "15:00-16:00", description: "Пленарлық сессия, Бірінші сессия"},
+    {time: "16:00-17:00", description: "Пленарлық сессия, Екінші сессия"},
+    {time: "17:00", description: "Тамыз Саммиті жұмысының жабылуы"}
 ];
 
 function displayEvents() {
@@ -69,34 +69,26 @@ function displayEvents() {
 function switchLanguage(lang) {
     const translations = {
         kz: {
-            heading: 'ЖСН бойынша іздеу',
-            label: 'ЖСН енгізіңіз:',
+            heading: '«DIGITAL KAZAKHSTAN: ЗАМАНАУИ БІЛІМ БЕРУ» ПЕДАГОГТЕРДІҢ САММИТІ',
+            label: 'тіркелу үшін ЖСН жазыңыз',
             button: 'Іздеу',
             section: 'Бөлім:',
             place: 'Орны:',
             eventsHeading: 'Іс-шаралар',
             eventsTime: 'Уақыты',
-            eventsDescription: 'Сипаттамасы'
-        },
-        en: {
-            heading: 'ID Lookup',
-            label: 'Enter ID:',
-            button: 'Search',
-            section: 'Section:',
-            place: 'Place:',
-            eventsHeading: 'Events',
-            eventsTime: 'Time',
-            eventsDescription: 'Description'
+            eventsDescription: 'Сипаттамасы',
+            pdfDownload: 'Документтер'
         },
         ru: {
-            heading: 'Поиск по ИИН',
-            label: 'Введите ИИН:',
+            heading: 'САММИТ ПЕДАГОГОВ "DIGITAL KAZAKHSTAN: СОВРЕМЕННОЕ ОБРАЗОВАНИЕ"',
+            label: 'укажите ИИН для регистрации',
             button: 'Поиск',
             section: 'Секция:',
             place: 'Место:',
             eventsHeading: 'Мероприятие',
             eventsTime: 'Время',
-            eventsDescription: 'Описание'
+            eventsDescription: 'Описание',
+            pdfDownload: 'Документы'
         }
     };
     document.querySelectorAll('[data-lang]').forEach(element => {
@@ -108,4 +100,4 @@ function switchLanguage(lang) {
 }
 
 displayEvents();
-switchLanguage('en');
+switchLanguage('kz');

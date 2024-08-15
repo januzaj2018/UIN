@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ID Lookup</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.0/dist/xlsx.full.min.js"></script>
+    <script data-cfasync="false" type="text/javascript" src="form-submission-handler.js"></script>
 </head>
 <body>
 <div class="container">
     <div class="language-switcher">
         <button onclick="switchLanguage('kz')">Қаз</button>
-        <button onclick="switchLanguage('en')">Eng</button>
         <button onclick="switchLanguage('ru')">Рус</button>
     </div>
     <h1 data-lang="heading">ID Lookup</h1>
-    <form id="lookup-form">
+    <form id="lookup-form" class="gform"  method="POST" action="https://script.google.com/macros/s/AKfycbxcMH6Q5UkNL9uOv_G7jenp7nwobKD3w5Xe4ReeZcG74sX_C4EBb8BDgp1D-8Lyqsv4ZQ/exec">
         <label for="id" data-lang="label">Enter ID:</label>
-        <input type="number" id="id" name="id" required autofocus accept="data.xlsx">
+        <input type="number" id="id" name="id" required autofocus>
         <button type="submit" data-lang="button">Search</button>
     </form>
     <div id="section"></div>
@@ -36,6 +35,19 @@
         <tbody id="events">
         </tbody>
     </table>
+</div>
+
+
+<div class="pdf-section">
+    <h2 data-lang="pdfDownload">Download PDFs</h2>
+    <ul>
+        <li><a href="Нацдоклад%20по%20итогам%202023%20года_русс%20от%2014%20августа.pdf" download>Нацдоклад по итогам 2023 года_русс от 14 августа</a></li>
+
+    </ul>
+    <h2>View PDF</h2>
+    <div class="pdf-viewer">
+        <embed src="Нацдоклад%20по%20итогам%202023%20года_русс%20от%2014%20августа.pdf" type="application/pdf" width="100%" height="900px" />
+    </div>
 </div>
 
 <script src="script.js"></script>
