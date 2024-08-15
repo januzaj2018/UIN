@@ -6,10 +6,7 @@ document.getElementById('lookup-form').addEventListener('submit', function (even
     const formData = new FormData();
     formData.append('id', id);
 
-    fetch('data.csv', {
-        method: 'POST',
-        body: formData,
-    })
+    fetch('data.csv')
         .then(response => response.text())
         .then(data => {
             const rows = data.split('\n').slice(1); // skip header row
