@@ -2,19 +2,13 @@ document.getElementById('lookup-form').addEventListener('submit', function (even
     event.preventDefault();
     const id = document.getElementById('id').value.trim();
 
-    // Create a FormData object to send data in the body of the POST request
-    const formData = new FormData();
-    formData.append('id', id);
-
-    fetch('')
-        .then(response => response.text())
+    fetch('data.json')  // Fetch the JSON file
+        .then(response => response.json())  // Parse the JSON file
         .then(data => {
-            const rows = data.split('\n').slice(1); // skip header row
             let section = 'ID not found';
-            rows.forEach(row => {
-                const [csvId, csvSection] = row.split(',');
-                if (csvId.trim() === id) {
-                    section = csvSection.trim(); // Trim any extra spaces
+            data.forEach(item => {
+                if (item.id === id) {
+                    section = item.section;
                 }
             });
 
@@ -34,7 +28,6 @@ document.getElementById('lookup-form').addEventListener('submit', function (even
                 "11": "Conference hall Library"
             };
 
-            // Check if the section is a valid key in the dictionary
             const place = sectionToPlace[section] || "Unknown place";
             document.getElementById('place').innerHTML = `Place: ${place}`;
         })
@@ -42,6 +35,7 @@ document.getElementById('lookup-form').addEventListener('submit', function (even
             console.error('Error:', error);
         });
 });
+
 const events = [
     {time: "08:00-09:00", description: "Тіркелу"},
     {time: "09:00-09:45", description: "«Мастер - дәріс», Хартман Дуглас, Мичиган мемлекттің университетінің профессоры"},
