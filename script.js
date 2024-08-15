@@ -68,7 +68,8 @@ function switchLanguage(lang) {
             eventsHeading: 'Іс-шаралар',
             eventsTime: 'Уақыты',
             eventsDescription: 'Сипаттамасы',
-            pdfDownload: 'Документтер'
+            pdfDownload: 'Документтер',
+            pdfView: 'PDF көру'
         },
         ru: {
             heading: 'САММИТ ПЕДАГОГОВ "DIGITAL KAZAKHSTAN: СОВРЕМЕННОЕ ОБРАЗОВАНИЕ"',
@@ -79,7 +80,8 @@ function switchLanguage(lang) {
             eventsHeading: 'Мероприятие',
             eventsTime: 'Время',
             eventsDescription: 'Описание',
-            pdfDownload: 'Документы'
+            pdfDownload: 'Документы',
+            pdfView: 'смотреть PDF'
         }
     };
     document.querySelectorAll('[data-lang]').forEach(element => {
