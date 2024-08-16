@@ -1,40 +1,43 @@
 document.getElementById('lookup-form').addEventListener('submit', function (event) {
     event.preventDefault();
-    const id = document.getElementById('id').value.trim();
+    const id = parseInt(document.getElementById('id').value.trim(), 10);
 
-    fetch('data.json')  // Fetch the JSON file
-        .then(response => response.json())  // Parse the JSON file
-        .then(data => {
-            let section = 'ID not found';
-            data.forEach(item => {
-                if (item.id === id) {
-                    section = item.section;
-                }
+
+    fetch('assets/data.csv')
+        .then(response => response.text())
+        .then(text => {
+            const rows = text.trim().split('\n');
+            const headers = rows[0].split(',').map(header => header.trim());
+
+            const data = rows.slice(1).map(row => {
+                const values = row.split(',').map(value => value.trim());
+                const item = {};
+                headers.forEach((header, index) => {
+                    item[header] = values[index];
+                });
+                return item;
             });
 
-            document.getElementById('section').innerText = `Section: ${section}`;
-
-            const sectionToPlace = {
-                "1": "Ball room",
-                "2": "Ball room",
-                "3": "1009/1",
-                "4": "2.003",
-                "5": "Ball room",
-                "6": "1010/1",
-                "7": "2.004/1",
-                "8": "Ball room",
-                "9": "2001",
-                "10": "2002/2",
-                "11": "Conference hall Library"
-            };
-
-            const place = sectionToPlace[section] || "Unknown place";
-            document.getElementById('place').innerHTML = `Place: ${place}`;
+            const item = data.find(entry => parseInt(entry.ID, 10) === id);
+            if (item) {
+                document.getElementById('name').innerText = `${item.Name}`;
+                document.getElementById('section').innerText = `${item.Section}`;
+                document.getElementById('place').innerText = `${item.Place}`;
+                document.getElementById('success-icon').style.display = 'block';
+            } else {
+                document.getElementById('name').innerText = 'ID not found';
+                document.getElementById('section').innerText = '';
+                document.getElementById('place').innerText = '';
+            }
         })
         .catch(error => {
             console.error('Error:', error);
+            document.getElementById('name').innerText = 'Error loading data';
+            document.getElementById('section').innerText = '';
+            document.getElementById('place').innerText = '';
         });
 });
+
 
 const events = [
     {time: "08:00-09:00", description: "Тіркелу"},
@@ -60,28 +63,30 @@ function displayEvents() {
 function switchLanguage(lang) {
     const translations = {
         kz: {
-            heading: '«DIGITAL KAZAKHSTAN: ЗАМАНАУИ БІЛІМ БЕРУ» ПЕДАГОГТЕРДІҢ САММИТІ',
+            heading: '«DIGITAL KAZAKHSTAN: ЗАМАНАУИ БІЛІМ БЕРУ» педагогтердің Республикалық тамыз саммиті',
             label: 'тіркелу үшін ЖСН жазыңыз',
             button: 'Іздеу',
             section: 'Бөлім:',
             place: 'Орны:',
-            eventsHeading: 'Іс-шаралар',
+            eventsHeading: 'Саммит бағдарламасы',
             eventsTime: 'Уақыты',
-            eventsDescription: 'Сипаттамасы',
+            eventsDescription: 'Іс-шара',
             pdfDownload: 'Документтер',
-            pdfView: 'PDF көру'
+            pdfView: 'Саммит материалдары',
+            resultName: 'Аты-жөні:'
         },
         ru: {
-            heading: 'САММИТ ПЕДАГОГОВ "DIGITAL KAZAKHSTAN: СОВРЕМЕННОЕ ОБРАЗОВАНИЕ"',
+            heading: 'Республиканский августовский саммит педагогов «DIGITAL KAZAKHSTAN: ОБРАЗОВАНИЕ В НОВОЙ РЕАЛЬНОСТИ»',
             label: 'укажите ИИН для регистрации',
             button: 'Поиск',
             section: 'Секция:',
             place: 'Место:',
-            eventsHeading: 'Мероприятие',
+            eventsHeading: 'Программа саммита',
             eventsTime: 'Время',
-            eventsDescription: 'Описание',
+            eventsDescription: 'Мероприятие',
             pdfDownload: 'Документы',
-            pdfView: 'смотреть PDF'
+            pdfView: 'Материалы саммита',
+            resultName: 'ФИО:'
         }
     };
     document.querySelectorAll('[data-lang]').forEach(element => {

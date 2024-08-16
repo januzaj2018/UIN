@@ -19,8 +19,14 @@
         <input type="number" id="id" name="id" required autofocus>
         <button type="submit" data-lang="button">Search</button>
     </form>
-    <div id="section"></div>
-    <div id="place"></div>
+    <div id="result">
+        <p ><strong data-lang="resultName">Name:</strong> <span id="name"></span></p>
+        <p><strong>Секция:</strong> <span id="section"></span></p>
+        <p ><strong>Аудитория:</strong> <span id="place"></span></p>
+        <div id="success-icon" style="display:none;">
+            <img src="assets/success-icon.png" alt="Success" width="128px" height="128px"/>
+        </div>
+    </div>
 </div>
 
 <div class="events-section">
