@@ -227,3 +227,27 @@ body {
     font-size: 1.2em;
     color: #333;
 }
+#success-icon {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#success-icon img {
+    max-width: 100%; /* Make sure the image scales down within its container */
+    height: auto; /* Maintain aspect ratio */
+    width: 50px; /* Default size */
+}
+
+/* Adjust the size for larger screens */
+@media (min-width: 600px) {
+    #success-icon img {
+        width: 100px; /* Larger size for bigger screens */
+    }
+}
+
+/* Adjust the size for very large screens */
+@media (min-width: 1200px) {
+    #success-icon img {
+        width: 128px; /* Even larger size for very large screens */
+    }
+}
