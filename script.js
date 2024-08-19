@@ -40,22 +40,22 @@ document.getElementById('lookup-form').addEventListener('submit', function (even
 
 
 const events = [
-    {time: "08:00-09:00", description: "Тіркелу"},
-    {time: "09:00-09:45", description: "«Мастер - дәріс», Хартман Дуглас, Мичиган мемлекттің университетінің профессоры"},
-    {time: "10:00-12:30", description: "Секциялық отырыстар"},
-    {time: "12:30-14:00", description: "Үзіліс"},
-    {time: "14:00", description: "Цифрлық көрме жұмысымен танысу"},
-    {time: "14:30-14:50", description: "«Қазақстан мұғалімі» ұлттық премиясының Үздік-50 финалистінің тұсаукесері"},
-    {time: "15:00-16:00", description: "Пленарлық сессия, Бірінші сессия"},
-    {time: "16:00-17:00", description: "Пленарлық сессия, Екінші сессия"},
-    {time: "17:00", description: "Тамыз Саммиті жұмысының жабылуы"}
+    {time: "08:00-09:00", description: "Тіркелу", place: "Фойе"},
+    {time: "09:00-09:45", description: "«Мастер - дәріс», Хартман Дуглас, Мичиган мемлекттің университетінің профессоры", place: "«MAIN HALL»"},
+    {time: "10:00-12:30", description: "Секциялық отырыстар",place:"12 секция"},
+    {time: "12:30-14:00", description: "Үзіліс",place:""},
+    {time: "14:00", description: "Цифрлық көрме жұмысымен танысу",place:"Жоғарғы атриум"},
+    {time: "14:30-14:50", description: "«Қазақстан мұғалімі» ұлттық премиясының Үздік-50 финалистінің тұсаукесері",place:"«MAIN HALL»"},
+    {time: "15:00-16:00", description: "Пленарлық сессия, Бірінші сессия",place:"«MAIN HALL»"},
+    {time: "16:00-17:00", description: "Пленарлық сессия, Екінші сессия",place:"«MAIN HALL»"},
+    {time: "17:00", description: "Тамыз Саммиті жұмысының жабылуы",place:"«MAIN HALL»"}
 ];
 
 function displayEvents() {
     const eventsTable = document.getElementById('events');
     events.forEach(event => {
         const eventRow = document.createElement('tr');
-        eventRow.innerHTML = `<td>${event.time}</td><td>${event.description}</td>`;
+        eventRow.innerHTML = `<td>${event.time}</td><td>${event.description}</td><td>${event.place}</td>`;
         eventsTable.appendChild(eventRow);
     });
 }
