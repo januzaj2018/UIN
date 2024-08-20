@@ -75,19 +75,6 @@ function switchLanguage(lang) {
             pdfView: 'Саммит материалдары',
             resultName: 'Аты-жөні:'
         },
-        ru: {
-            heading: 'Республиканский августовский саммит педагогов «DIGITAL KAZAKHSTAN: ОБРАЗОВАНИЕ В НОВОЙ РЕАЛЬНОСТИ»',
-            label: 'укажите ИИН для регистрации',
-            button: 'Поиск',
-            section: 'Секция:',
-            place: 'Место:',
-            eventsHeading: 'Программа саммита',
-            eventsTime: 'Время',
-            eventsDescription: 'Мероприятие',
-            pdfDownload: 'Документы',
-            pdfView: 'Материалы саммита',
-            resultName: 'ФИО:'
-        }
     };
     document.querySelectorAll('[data-lang]').forEach(element => {
         const key = element.getAttribute('data-lang');
