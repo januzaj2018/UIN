@@ -63,7 +63,7 @@ function displayEvents() {
 function switchLanguage(lang) {
     const translations = {
         kz: {
-            heading: '«DIGITAL KAZAKHSTAN: ЗАМАНАУИ БІЛІМ БЕРУ» педагогтердің Республикалық тамыз саммиті',
+            heading: '«DIGITAL KAZAKHSTAN: ЗАМАНАУИ БІЛІМ БЕРУ» педагогтердің республикалық тамыз саммиті',
             label: 'тіркелу үшін ЖСН жазыңыз',
             button: 'Іздеу',
             section: 'Бөлім:',
