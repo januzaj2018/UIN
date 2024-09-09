@@ -41,14 +41,22 @@ document.getElementById('lookup-form').addEventListener('submit', function (even
 
 const events = [
     {time: "08:00-09:00", description: "Тіркелу", place: "Фойе"},
-    {time: "09:00-09:45", description: "«Мастер - дәріс», Хартман Дуглас, Мичиган мемлекеттік университетінің профессоры", place: "«MAIN HALL»"},
-    {time: "10:00-12:30", description: "Секциялық отырыстар",place:"12 секция"},
-    {time: "12:30-14:00", description: "Үзіліс",place:""},
-    {time: "14:00", description: "Цифрлық көрме жұмысымен танысу",place:"Жоғарғы атриум"},
-    {time: "14:30-14:50", description: "«Қазақстан мұғалімі» ұлттық премиясының Үздік-50 финалистінің тұсаукесері",place:"«MAIN HALL»"},
-    {time: "15:00-16:00", description: "Пленарлық сессия, Бірінші сессия",place:"«MAIN HALL»"},
-    {time: "16:00-17:00", description: "Пленарлық сессия, Екінші сессия",place:"«MAIN HALL»"},
-    {time: "17:00", description: "Тамыз саммитінің жабылуы",place:"«MAIN HALL»"}
+    {
+        time: "09:00-09:45",
+        description: "«Мастер - дәріс», Хартман Дуглас, Мичиган мемлекеттік университетінің профессоры",
+        place: "«MAIN HALL»"
+    },
+    {time: "10:00-12:30", description: "Секциялық отырыстар", place: "12 секция"},
+    {time: "12:30-14:00", description: "Үзіліс", place: ""},
+    {time: "14:00", description: "Цифрлық көрме жұмысымен танысу", place: "Жоғарғы атриум"},
+    {
+        time: "14:30-14:50",
+        description: "«Қазақстан мұғалімі» ұлттық премиясының Үздік-50 финалистінің тұсаукесері",
+        place: "«MAIN HALL»"
+    },
+    {time: "15:00-16:00", description: "Пленарлық сессия, Бірінші сессия", place: "«MAIN HALL»"},
+    {time: "16:00-17:00", description: "Пленарлық сессия, Екінші сессия", place: "«MAIN HALL»"},
+    {time: "17:00", description: "Тамыз саммитінің жабылуы", place: "«MAIN HALL»"}
 ];
 
 function displayEvents() {
@@ -75,6 +83,33 @@ function switchLanguage(lang) {
             pdfView: 'Саммит материалдары',
             resultName: 'Аты-жөні:'
         },
+
+        ru:
+            {
+                heading: 'Республиканский августовский саммит учителей "Digital Kazakhstan: современное образование"',
+                label: 'напишите свой ИИН для регистрации',
+                button: 'Поиск',
+                section: 'Раздел: ',
+                place: 'Место: ',
+                eventsHeading: 'Программа саммита',
+                eventsTime: 'Время',
+                eventsDescription: 'Мероприятие',
+                pdfDownload: 'Материалы саммита',
+                resultName: 'Имя: '
+            },
+        en:
+            {
+                heading: 'Republican August summit of teachers "DIGITAL KAZAKHSTAN: modern education"',
+                label: 'write your IIN for registration',
+                button: 'Search',
+                section: 'Department: ',
+                place: 'Place: ',
+                eventsHeading: 'Summit program',
+                eventsTime: 'Time',
+                eventsDescription: 'Events',
+                pdfDownload: 'Documents',
+                resultName: 'Name: '
+            }
     };
     document.querySelectorAll('[data-lang]').forEach(element => {
         const key = element.getAttribute('data-lang');
@@ -85,4 +120,4 @@ function switchLanguage(lang) {
 }
 
 displayEvents();
-switchLanguage('kz');
+switchLanguage('en');

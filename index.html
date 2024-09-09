@@ -10,9 +10,13 @@
 <body>
 <div class="container">
     <div class="language-switcher">
+        <button onclick="switchLanguage('kz')">KZ</button>
+        <button onclick="switchLanguage('ru')">RU</button>
+        <button onclick="switchLanguage('en')">EN</button>
     </div>
     <h1 data-lang="heading">ID Lookup</h1>
     <form id="lookup-form" class="gform"  method="GET" action="https://script.google.com/macros/s/AKfycbxcMH6Q5UkNL9uOv_G7jenp7nwobKD3w5Xe4ReeZcG74sX_C4EBb8BDgp1D-8Lyqsv4ZQ/exec">
+
         <label for="id" data-lang="label">Enter ID:</label>
         <input type="number" id="id" name="id" required autofocus>
         <button type="submit" data-lang="button">Search</button>
